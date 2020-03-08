@@ -1,1 +1,3 @@
 provider "oci" {}
+
+provider "random" {}

@@ -1,3 +1,5 @@
+variable tenancy {}
+
 variable compartment {}
 
 variable instance {
