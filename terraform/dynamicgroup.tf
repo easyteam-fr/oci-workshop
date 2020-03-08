@@ -16,6 +16,8 @@ resource oci_identity_policy devinstance_policies {
 
   statements = [
     "Allow dynamicgroup ${oci_identity_dynamic_group.devinstances.name} to manage buckets in compartment ${data.oci_identity_compartment.learn_compartment.name}",
+    "Allow dynamicgroup ${oci_identity_dynamic_group.devinstances.name} to read buckets in compartment ${data.oci_identity_compartment.learn_compartment.name}",
+    "Allow dynamicgroup ${oci_identity_dynamic_group.devinstances.name} to read objects in compartment ${data.oci_identity_compartment.learn_compartment.name}",
   ]
 }
 

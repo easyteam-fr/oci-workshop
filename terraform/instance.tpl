@@ -11,3 +11,5 @@ runcmd:
   - curl -L "https://publish.twitter.com/oembed?url=https://twitter.com/twitter/status/${tweet}" | jq -r '.html' >>"/var/www/html/index.html"
   - echo "</body></html>" >>"/var/www/html/index.html"
   - sysctl -p /etc/sysctl.d/98-ip-forward.conf
+  - OCI_CLI_AUTH=instance_principal oci os object get --bucket-name ftclnpb3wrytejru.resetlogs.com --file=/etc/secret.json --name=/configuration/secret/secret.json
+  - chmod 400 /etc/secret.json
