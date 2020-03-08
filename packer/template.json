@@ -1,0 +1,18 @@
+{
+  "builders": [{
+    "availability_domain": "eTfD:EU-FRANKFURT-1-AD-1",
+    "base_image_ocid": "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa4cmgko5la45jui5cuju7byv6dgnfnjbxhwqxaei3q4zjwlliptuq",
+    "compartment_ocid": "{{ user `compartment` }}",
+    "image_name": "LiveCode",
+    "shape": "VM.Standard2.1",
+    "ssh_username": "opc",
+    "ssh_timeout": "15m",
+    "subnet_ocid": "{{ user `subnet` }}",
+    "type": "oracle-oci"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "script": "./install.sh",
+    "execute_command": "sudo {{ .Vars }} bash {{ .Path }}"
+  }]
+}
