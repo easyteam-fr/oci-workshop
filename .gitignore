@@ -9,3 +9,4 @@
 *.tfvars
 /.env
 backend.tf
+remote.tf

@@ -30,7 +30,13 @@ resource "oci_core_instance" "myinstance" {
 
   metadata = {
     ssh_authorized_keys = var.ssh_public_key
-    user_data           = base64encode(file("${path.module}/instance.tpl"))
+    user_data           = base64encode(templatefile(
+                            "${path.module}/instance.tpl",
+                            {
+                               workshop_version = lookup(data.external.version.result, "oci-workshop"),
+                               tweet            = "1013378279347286016" }
+                            )
+                          )
   }
 }
 
@@ -59,7 +65,7 @@ data "oci_core_public_ips" "mypublicips" {
   
   filter {
     name = "private_ip_id"
-    values = ["${lookup(data.oci_core_private_ips.myprivateip[count.index].private_ips[0], "id")}"]
+    values = [lookup(data.oci_core_private_ips.myprivateip[count.index].private_ips[0], "id")]
   }
 }
 
