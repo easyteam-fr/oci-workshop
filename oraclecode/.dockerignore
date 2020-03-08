@@ -1,0 +1,10 @@
+.dockerignore
+.gitignore
+.env
+.hubot_history
+.DS_Store*
+kube.yaml
+Dockerfile
+Makefile
+README.md
+node_modules/*

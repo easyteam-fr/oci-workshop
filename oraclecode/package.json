@@ -1,0 +1,19 @@
+{
+  "name": "oraclecode",
+  "version": "0.2.6",
+  "private": true,
+  "author": "gregory.guillou@resetlogs.com",
+  "description": "A simple robot for Oracle Code",
+  "dependencies": {
+    "hubot": "^3.3.2",
+    "hubot-diagnostics": "^1.0.0",
+    "hubot-help": "^1.0.1",
+    "hubot-redis-brain": "^1.0.0",
+    "hubot-rules": "^1.0.0",
+    "hubot-slack": "^4.7.1",
+    "twitter": "^1.7.1"
+  },
+  "engines": {
+    "node": "> 4.0.0"
+  }
+}

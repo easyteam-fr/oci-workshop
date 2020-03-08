@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oraclecode
+  namespace: devops
+  labels:
+    app: oraclecode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oraclecode
+  template:
+    metadata:
+      labels:
+        app: oraclecode
+    spec:
+      containers:
+      - name: oraclecode
+        image: "fra.ocir.io/nomad/oraclecode:$VERSION"
+        env:
+          - name: HUBOT_TRACK
+            value: "$HUBOT_TRACK"
+          - name: HUBOT_SEARCH
+            value: "$HUBOT_SEARCH"
+          - name: TWITTER_CONSUMER_KEY
+            valueFrom:
+              secretKeyRef:
+                name: oraclecode
+                key: twitter_consumer_key
+          - name: TWITTER_CONSUMER_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: oraclecode
+                key: twitter_consumer_secret
+          - name: TWITTER_ACCESS_TOKEN_KEY
+            valueFrom:
+              secretKeyRef:
+                name: oraclecode
+                key: twitter_access_token_key
+          - name: TWITTER_ACCESS_TOKEN_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: oraclecode
+                key: twitter_access_token_secret
+          - name: HUBOT_SLACK_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: oraclecode
+                key: hubot_slack_token
+      imagePullSecrets:
+      - name: oracle-fra
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: oraclecode
+  namespace: devops
+type: Opaque
+data:
+  twitter_consumer_key: "$BASE64_TWITTER_CONSUMER_KEY"
+  twitter_consumer_secret: "$BASE64_TWITTER_CONSUMER_SECRET"
+  twitter_access_token_key: "$BASE64_TWITTER_ACCESS_TOKEN_KEY"
+  twitter_access_token_secret: "$BASE64_TWITTER_ACCESS_TOKEN_SECRET"
+  hubot_slack_token: "$BASE64_HUBOT_SLACK_TOKEN"
+---

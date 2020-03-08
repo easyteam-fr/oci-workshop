@@ -1,4 +1,4 @@
-# Terraform and Oracle Cloud Infrastructure Simple Workshop
+# Terraform and Oracle Cloud Infrastructure Workshop
 
 This workshop guides you through the setup, configuration and a few
 demonstrations of `terraform` with Oracle Cloud Infrastructure (OCI). It was
@@ -23,6 +23,7 @@ Do not hesitate to use it and ask for enhancements if you have any ideas.
 [07-other-providers.md](docs/07-other-providers.md)
 8. Manage your secrets out-of-band, see `branch:08-demo` and
 [08-secrets.md](docs/08-secrets.md)
+9. Create a Bot that interacts with Slack and Twitter, see `branch:oraclecode` and [oraclecode](oraclecode/README.md)
 
 ## How to use this repository?
 
@@ -39,3 +40,4 @@ branch with the `git checkout` command. To start, clone it and run
 If you like this repository, do not hesitate to add a star. If you have any
 questions or ideas to enhance it, open an issue. Have fun!
 
+![Oracle Code](docs/images/oraclecode.png)
